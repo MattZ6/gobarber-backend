@@ -1,6 +1,6 @@
 import AppError from '@shared/errors/AppError';
 
-import FakeUsersRepository from '@modules/users/repositories/FakeUsersRepository';
+import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import FakeHashProvider from '@modules/users/providers/HashProvider/fakes/FakeHashProvider';
 import CreateUserService from '@modules/users/services/CreateUserService';
 import CreateSessionService from '@modules/users/services/CreateSessionService';
@@ -47,7 +47,7 @@ describe('CreateSession', () => {
       fakeHashProvider
     );
 
-    expect(
+    await expect(
       createSession.execute({
         email: 'johndoe@example.com',
         password: '123456',
@@ -77,7 +77,7 @@ describe('CreateSession', () => {
       fakeHashProvider
     );
 
-    expect(
+    await expect(
       createSession.execute({
         email,
         password: 'wrongpassword',
