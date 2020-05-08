@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import multer from 'multer';
+import * as multer from 'multer';
 
 import UsersController from '@modules/users/infra/http/controllers/UsersControllers';
 import UserAvatarController from '@modules/users/infra/http/controllers/UserAvatarController';

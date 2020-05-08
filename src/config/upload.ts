@@ -1,6 +1,6 @@
 import { resolve } from 'path';
-import crypto from 'crypto';
-import multer from 'multer';
+import * as crypto from 'crypto';
+import * as multer from 'multer';
 
 const tmpFolder = resolve(__dirname, '..', '..', 'tmp');
 

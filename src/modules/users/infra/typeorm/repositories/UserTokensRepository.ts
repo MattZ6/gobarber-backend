@@ -14,7 +14,7 @@ export default class UserTokensRepository implements IUserTokensRepository {
   async generate(user_id: string): Promise<UserToken> {
     const userToken = this.ormRepository.create({ user_id });
 
-    this.ormRepository.save(userToken);
+    await this.ormRepository.save(userToken);
 
     return userToken;
   }

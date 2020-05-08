@@ -1,7 +1,7 @@
 import 'reflect-metadata';
 
-import express, { Response, Request, NextFunction } from 'express';
-import cors from 'cors';
+import * as express from 'express';
+import * as cors from 'cors';
 import 'express-async-errors';
 
 import uploadConfig from '@config/upload';
@@ -16,24 +16,31 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use('/v1/files', express.static(uploadConfig.directory));
+app.use('/v1/files', express.static(uploadConfig.uploadsFolder));
 app.use(routes);
 
-app.use((err: Error, req: Request, res: Response, _: NextFunction) => {
-  if (err instanceof AppError) {
-    return res.status(err.statusCode).json({
+app.use(
+  (
+    err: Error,
+    req: express.Request,
+    res: express.Response,
+    _: express.NextFunction
+  ) => {
+    if (err instanceof AppError) {
+      return res.status(err.statusCode).json({
+        status: 'error',
+        message: err.message,
+      });
+    }
+
+    console.error(err);
+
+    return res.status(500).json({
       status: 'error',
-      message: err.message,
+      message: 'Internal server error',
     });
   }
-
-  console.error(err);
-
-  return res.status(500).json({
-    status: 'error',
-    message: 'Internal server error',
-  });
-});
+);
 
 app.listen(3333, () => {
   console.log('💩 Listen in port 3333!');
