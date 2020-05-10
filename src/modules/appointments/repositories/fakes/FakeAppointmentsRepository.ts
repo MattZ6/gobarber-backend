@@ -12,9 +12,9 @@ export default class AppointmentsRepository implements IAppointmentsRepository {
   private appointments: Appointment[] = [];
 
   async findByDate(date: Date): Promise<Appointment | undefined> {
-    return this.appointments.find(appointment =>
-      isEqual(appointment.date, date)
-    );
+    const appointment = this.appointments.find(x => isEqual(x.date, date));
+
+    return appointment;
   }
 
   async findAllInMonthFromProvider({
