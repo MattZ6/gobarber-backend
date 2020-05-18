@@ -28,9 +28,26 @@ export default class ListProviderAppointmentsService {
     month,
     year,
   }: IRequest): Promise<Appointment[]> {
-    const appointments = await this.appointmentsRepository.findAllInDayFromProvider(
-      { day, month, year, provider_id }
+    const CACHE_KEY = `provider-appointments:${provider_id}:${year}-${month}-${day}`;
+
+    let appointments = await this.cacheProvider.recover<Appointment[]>(
+      CACHE_KEY
     );
+
+    if (!appointments) {
+      appointments = await this.appointmentsRepository.findAllInDayFromProvider(
+        {
+          day,
+          month,
+          year,
+          provider_id,
+        }
+      );
+
+      console.log('BUSCOU DO BANCO DE DADOS');
+
+      await this.cacheProvider.save(CACHE_KEY, appointments);
+    }
 
     return appointments;
   }
