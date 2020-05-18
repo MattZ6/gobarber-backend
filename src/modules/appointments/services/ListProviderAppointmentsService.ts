@@ -44,8 +44,6 @@ export default class ListProviderAppointmentsService {
         }
       );
 
-      console.log('BUSCOU DO BANCO DE DADOS');
-
       await this.cacheProvider.save(CACHE_KEY, appointments);
     }
 
