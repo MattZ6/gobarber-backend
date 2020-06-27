@@ -1,7 +1,7 @@
 import { promises } from 'fs';
 import { resolve } from 'path';
 import { S3 } from 'aws-sdk';
-import * as mime from 'mime';
+import mime from 'mime';
 
 import uploadConfig from '@config/upload';
 

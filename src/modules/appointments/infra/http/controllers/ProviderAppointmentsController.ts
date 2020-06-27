@@ -14,9 +14,9 @@ export default class ProviderAppointmentsController {
 
     const availability = await listProviderAppointments.execute({
       provider_id,
-      day: +day,
-      month: +month,
-      year: +year,
+      day: Number(day),
+      month: Number(month),
+      year: Number(year),
     });
 
     return response.json(availability);

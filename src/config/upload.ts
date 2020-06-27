@@ -1,5 +1,5 @@
 import { resolve } from 'path';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import { diskStorage, StorageEngine } from 'multer';
 
 const tmpFolder = resolve(__dirname, '..', '..', 'tmp');

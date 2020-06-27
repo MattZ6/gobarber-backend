@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import * as multer from 'multer';
+import multer from 'multer';
 import { celebrate, Segments, Joi } from 'celebrate';
 
 import UsersController from '@modules/users/infra/http/controllers/UsersControllers';
