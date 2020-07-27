@@ -40,7 +40,7 @@
     "@types/cors": "2.8.6",
     "@types/express": "4.17.7",
     "@types/hapi__joi": "17.1.4",
-    "@types/ioredis": "4.16.2",
+    "@types/ioredis": "4.17.2",
     "@types/jest": "25.2.3",
     "@types/jsonwebtoken": "8.5.0",
     "@types/mongodb": "3.5.16",
